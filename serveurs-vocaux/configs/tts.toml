@@ -19,7 +19,9 @@ log_folder = "/tmp/raphael_logs"
 # We could use replace **/*.safetensors with unmute-prod-website/*.safetensors
 # to only get the voices used in Unmute, but we are using the TTS for the demo
 # on the project page too and for that we want to load the other voices as well
-voice_folder = "hf-snapshot://kyutai/tts-voices/**/*.safetensors"
+# Seulement les voix du site Unmute (dont les 2 voix françaises), pour éviter de
+# télécharger les 900 fichiers du dépôt (Hugging Face limite les téléchargements anonymes).
+voice_folder = "hf-snapshot://kyutai/tts-voices/unmute-prod-website/*.safetensors"
 default_voice = "unmute-prod-website/default_voice.wav"
 cfg_coef = 2.0
 cfg_is_no_text = true
