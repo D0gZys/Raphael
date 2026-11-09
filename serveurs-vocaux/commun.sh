@@ -6,7 +6,9 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # moshi-server embarque une partie Python (PyTorch) pour la TTS et a besoin de
 # libpython même pour la STT : on prépare l'environnement Python officiel.
-MOSHI_COMMIT=9837ca328d58deef5d7a4fe95a0fb49c902ec0ae
+# Commit de kyutai-labs/moshi (version 0.6.4) dont l'environnement Python utilise PyTorch 2.9,
+# compatible avec les RTX 50xx. L'ancien commit utilisé par Unmute (PyTorch 2.6) ne l'est pas.
+MOSHI_COMMIT=e6a55d2722a65870ef52a6c9f6ecfc0e90f38362
 mkdir -p tts-python
 [ -f tts-python/pyproject.toml ] || wget -q -P tts-python https://raw.githubusercontent.com/kyutai-labs/moshi/$MOSHI_COMMIT/rust/moshi-server/pyproject.toml
 [ -f tts-python/uv.lock ] || wget -q -P tts-python https://raw.githubusercontent.com/kyutai-labs/moshi/$MOSHI_COMMIT/rust/moshi-server/uv.lock
